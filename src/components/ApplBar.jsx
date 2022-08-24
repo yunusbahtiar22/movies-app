@@ -11,11 +11,16 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import SearchIcon from "@mui/icons-material/Search";
+import RedeemIcon from "@mui/icons-material/Redeem";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 // import AdbIcon from "@mui/icons-material/Adb";
 
-const pages = ["Products", "Pricing", "Blog"];
+// const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Home", "Series", "Movies", "New and Popular", "My List"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-const user = null;
+const user = true;
 
 const ApplBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -134,22 +139,56 @@ const ApplBar = () => {
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
             }}>
-            <Box sx={{ display: "flex", width: "50%", mx: "auto", gap: 8 }}>
+            <Box sx={{ display: "flex", width: "50%", ml: "8rem" }}>
               {pages.map((page) => (
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}>
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    textTransform: "none",
+                  }}>
                   {page}
                 </Button>
               ))}
             </Box>
           </Box>
+          <Box sx={{ mr: 2 }}>
+            <IconButton aria-label="search">
+              <SearchIcon />
+            </IconButton>
+          </Box>
+          {user && (
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+                flexGrow: 0,
+                gap: 1,
+                mr: "1rem",
+                alignItems: "center",
+              }}>
+              {/* <IconButton aria-label="search">
+              <SearchIcon />
+            </IconButton> */}
+              <Typography>Yunus Bahtiar</Typography>
+              <IconButton aria-label="redeem">
+                <RedeemIcon />
+              </IconButton>
+              <IconButton aria-label="notifications">
+                <NotificationsIcon />
+              </IconButton>
+            </Box>
+          )}
           {user && (
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar
+                    alt="Remy Sharp"
+                    src={`${process.env.PUBLIC_URL}/ProfilePicture.png`}
+                  />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -176,13 +215,64 @@ const ApplBar = () => {
             </Box>
           )}
           {!user && (
-            <Box sx={{ display: "flex", gap: 3, flexGrow: 0 }}>
-              <Button sx={{ my: 2, color: "white", display: "block" }}>
-                Sign In
-              </Button>
-              <Button sx={{ my: 2, color: "white", display: "block" }}>
-                Sign Up
-              </Button>
+            <Box sx={{ display: "flex", flexGrow: 0, alignItems: "center" }}>
+              <Box sx={{ display: { xs: "flex", md: "none" }, flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton
+                    onClick={handleOpenUserMenu}
+                    sx={{ p: 0 }}
+                    size="large">
+                    <AccountCircleIcon fontSize="inherit" />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">Sign Up</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">Sign In</Typography>
+                  </MenuItem>
+                </Menu>
+              </Box>
+              <Box
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  gap: 3,
+                  flexGrow: 0,
+                }}>
+                <Button
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    textTransform: "none",
+                  }}>
+                  Sign In
+                </Button>
+                <Button
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    textTransform: "none",
+                  }}>
+                  Sign Up
+                </Button>
+              </Box>
             </Box>
           )}
         </Toolbar>
