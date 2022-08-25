@@ -53,24 +53,6 @@ const ApplBar = () => {
             height={30}
             sx={{ display: { xs: "none", md: "flex" }, margin: "auto" }}
           />
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}>
-            LOGO
-          </Typography> */}
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -78,7 +60,8 @@ const ApplBar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit">
+              color="inherit"
+            >
               <MenuIcon />
             </IconButton>
             <Menu
@@ -97,7 +80,9 @@ const ApplBar = () => {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
-              }}>
+                mt: "10px",
+              }}
+            >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
@@ -112,33 +97,13 @@ const ApplBar = () => {
               height={30}
               sx={{ display: { xs: "flex", md: "none" }, margin: "auto" }}
             />
-            {/* <AdbIcon
-              sx={{ display: { xs: "flex", md: "none" }, margin: "auto" }}
-            /> */}
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mx: "auto" }} /> */}
-          {/* <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}>
-            LOGO
-          </Typography> */}
           <Box
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
-            }}>
+            }}
+          >
             <Box sx={{ display: "flex", width: "50%", ml: "8rem" }}>
               {pages.map((page) => (
                 <Button
@@ -149,7 +114,8 @@ const ApplBar = () => {
                     color: "white",
                     display: "block",
                     textTransform: "none",
-                  }}>
+                  }}
+                >
                   {page}
                 </Button>
               ))}
@@ -168,7 +134,8 @@ const ApplBar = () => {
                 gap: 1,
                 mr: "1rem",
                 alignItems: "center",
-              }}>
+              }}
+            >
               {/* <IconButton aria-label="search">
               <SearchIcon />
             </IconButton> */}
@@ -205,7 +172,8 @@ const ApplBar = () => {
                   horizontal: "right",
                 }}
                 open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}>
+                onClose={handleCloseUserMenu}
+              >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
@@ -215,13 +183,16 @@ const ApplBar = () => {
             </Box>
           )}
           {!user && (
-            <Box sx={{ display: "flex", flexGrow: 0, alignItems: "center" }}>
+            <Box
+              sx={{ display: "flex", flexGrow: 0, alignItems: "center", mr: 2 }}
+            >
               <Box sx={{ display: { xs: "flex", md: "none" }, flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton
                     onClick={handleOpenUserMenu}
                     sx={{ p: 0 }}
-                    size="large">
+                    size="large"
+                  >
                     <AccountCircleIcon fontSize="inherit" />
                   </IconButton>
                 </Tooltip>
@@ -239,7 +210,8 @@ const ApplBar = () => {
                     horizontal: "right",
                   }}
                   open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}>
+                  onClose={handleCloseUserMenu}
+                >
                   <MenuItem onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">Sign Up</Typography>
                   </MenuItem>
@@ -253,14 +225,16 @@ const ApplBar = () => {
                   display: { xs: "none", md: "flex" },
                   gap: 3,
                   flexGrow: 0,
-                }}>
+                }}
+              >
                 <Button
                   sx={{
                     my: 2,
                     color: "white",
                     display: "block",
                     textTransform: "none",
-                  }}>
+                  }}
+                >
                   Sign In
                 </Button>
                 <Button
@@ -269,7 +243,8 @@ const ApplBar = () => {
                     color: "white",
                     display: "block",
                     textTransform: "none",
-                  }}>
+                  }}
+                >
                   Sign Up
                 </Button>
               </Box>
