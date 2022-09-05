@@ -20,7 +20,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 // const pages = ["Products", "Pricing", "Blog"];
 const pages = ["Home", "Series", "Movies", "New and Popular", "My List"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-const user = true;
+const user = false;
 
 const ApplBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -60,8 +60,7 @@ const ApplBar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
-            >
+              color="inherit">
               <MenuIcon />
             </IconButton>
             <Menu
@@ -81,8 +80,7 @@ const ApplBar = () => {
               sx={{
                 display: { xs: "block", md: "none" },
                 mt: "10px",
-              }}
-            >
+              }}>
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
@@ -102,8 +100,7 @@ const ApplBar = () => {
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
-            }}
-          >
+            }}>
             <Box sx={{ display: "flex", width: "50%", ml: "8rem" }}>
               {pages.map((page) => (
                 <Button
@@ -114,8 +111,7 @@ const ApplBar = () => {
                     color: "white",
                     display: "block",
                     textTransform: "none",
-                  }}
-                >
+                  }}>
                   {page}
                 </Button>
               ))}
@@ -134,8 +130,7 @@ const ApplBar = () => {
                 gap: 1,
                 mr: "1rem",
                 alignItems: "center",
-              }}
-            >
+              }}>
               {/* <IconButton aria-label="search">
               <SearchIcon />
             </IconButton> */}
@@ -172,8 +167,7 @@ const ApplBar = () => {
                   horizontal: "right",
                 }}
                 open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
+                onClose={handleCloseUserMenu}>
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
@@ -184,15 +178,18 @@ const ApplBar = () => {
           )}
           {!user && (
             <Box
-              sx={{ display: "flex", flexGrow: 0, alignItems: "center", mr: 2 }}
-            >
+              sx={{
+                display: "flex",
+                flexGrow: 0,
+                alignItems: "center",
+                mr: 2,
+              }}>
               <Box sx={{ display: { xs: "flex", md: "none" }, flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton
                     onClick={handleOpenUserMenu}
                     sx={{ p: 0 }}
-                    size="large"
-                  >
+                    size="large">
                     <AccountCircleIcon fontSize="inherit" />
                   </IconButton>
                 </Tooltip>
@@ -210,8 +207,7 @@ const ApplBar = () => {
                     horizontal: "right",
                   }}
                   open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
+                  onClose={handleCloseUserMenu}>
                   <MenuItem onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">Sign Up</Typography>
                   </MenuItem>
@@ -225,16 +221,14 @@ const ApplBar = () => {
                   display: { xs: "none", md: "flex" },
                   gap: 3,
                   flexGrow: 0,
-                }}
-              >
+                }}>
                 <Button
                   sx={{
                     my: 2,
                     color: "white",
                     display: "block",
                     textTransform: "none",
-                  }}
-                >
+                  }}>
                   Sign In
                 </Button>
                 <Button
@@ -243,8 +237,7 @@ const ApplBar = () => {
                     color: "white",
                     display: "block",
                     textTransform: "none",
-                  }}
-                >
+                  }}>
                   Sign Up
                 </Button>
               </Box>

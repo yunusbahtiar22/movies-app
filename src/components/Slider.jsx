@@ -3,8 +3,11 @@ import { Box, Fab } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-const Carousel = () => {
+const Slider = () => {
   const scrollRef = useRef(null);
+  // const maxScroll =
+  // scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+
   const slides = [1, 2, 3, 4, 5, 6, 7, 8];
   const handlePrev = () => {
     scrollRef.current.scrollLeft -= 200;
@@ -12,6 +15,7 @@ const Carousel = () => {
   const handleNext = () => {
     scrollRef.current.scrollLeft += 200;
   };
+
   return (
     <Box
       sx={{
@@ -20,8 +24,7 @@ const Carousel = () => {
         position: "relative",
         width: "100%",
         height: "max-content",
-      }}
-    >
+      }}>
       <Fab
         onClick={handlePrev}
         sx={{
@@ -29,8 +32,7 @@ const Carousel = () => {
           left: 0,
           borderRadius: 0,
           background: "rgba(255, 255, 255, 0.5)",
-        }}
-      >
+        }}>
         <ArrowBackIosIcon />
       </Fab>
       <Box
@@ -43,18 +45,20 @@ const Carousel = () => {
           scrollBehavior: "smooth",
           scrollbarWidth: "none",
           "&::-webkit-scrollbar": { display: "none" },
-        }}
-      >
+        }}>
         {slides.map((slide) => (
           <Box
+            component="img"
+            src={`${process.env.PUBLIC_URL}/topgun.jpg`}
             sx={{
               display: "inline-block",
               mr: "4px",
               width: "200px",
               height: "275px",
-              borderRadius: "10px",
+              borderRadius: "5px",
               background: "#fff",
             }}
+            key={slide}
           />
         ))}
       </Box>
@@ -65,12 +69,11 @@ const Carousel = () => {
           right: 0,
           borderRadius: 0,
           background: "rgba(255, 255, 255, 0.5)",
-        }}
-      >
+        }}>
         <ArrowForwardIosIcon />
       </Fab>
     </Box>
   );
 };
 
-export default Carousel;
+export default Slider;
