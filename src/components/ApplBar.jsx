@@ -20,7 +20,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 // const pages = ["Products", "Pricing", "Blog"];
 const pages = ["Home", "Series", "Movies", "New and Popular", "My List"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-const user = true;
+const user = false;
 
 const ApplBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -53,24 +53,6 @@ const ApplBar = () => {
             height={30}
             sx={{ display: { xs: "none", md: "flex" }, margin: "auto" }}
           />
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}>
-            LOGO
-          </Typography> */}
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -97,6 +79,7 @@ const ApplBar = () => {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
+                mt: "10px",
               }}>
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
@@ -112,28 +95,7 @@ const ApplBar = () => {
               height={30}
               sx={{ display: { xs: "flex", md: "none" }, margin: "auto" }}
             />
-            {/* <AdbIcon
-              sx={{ display: { xs: "flex", md: "none" }, margin: "auto" }}
-            /> */}
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mx: "auto" }} /> */}
-          {/* <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}>
-            LOGO
-          </Typography> */}
           <Box
             sx={{
               flexGrow: 1,
@@ -215,7 +177,13 @@ const ApplBar = () => {
             </Box>
           )}
           {!user && (
-            <Box sx={{ display: "flex", flexGrow: 0, alignItems: "center" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexGrow: 0,
+                alignItems: "center",
+                mr: 2,
+              }}>
               <Box sx={{ display: { xs: "flex", md: "none" }, flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton
